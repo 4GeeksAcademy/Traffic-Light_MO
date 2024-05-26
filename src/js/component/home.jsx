@@ -1,26 +1,29 @@
-import React from "react";
+// src/Semaforo.js
+import React, { useState, useEffect } from 'react';
+import './Semaforo.css';
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+const Semaforo = () => {
+  const [color, setColor] = useState('red');
 
-//create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColor(prevColor => {
+        if (prevColor === 'red') return 'yellow';
+        if (prevColor === 'yellow') return 'green';
+        return 'red';
+      });
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="semaforo">
+      <div className={`light ${color === 'red' ? 'red' : ''}`}></div>
+      <div className={`light ${color === 'yellow' ? 'yellow' : ''}`}></div>
+      <div className={`light ${color === 'green' ? 'green' : ''}`}></div>
+    </div>
+  );
 };
 
-export default Home;
+export default Semaforo;

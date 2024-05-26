@@ -6,7 +6,22 @@ import ReactDOM from "react-dom";
 import "../styles/index.css";
 
 //import your own components
-import Home from "./component/home.jsx";
+import Semaforo from "./component/home.jsx";
 
 //render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
+ReactDOM.render(<Semaforo />, document.querySelector("#app"));
+// src/App.js
+
+
+import Semaforo from './Semaforo';
+
+const App = () => {
+  return (
+    <div className="App">
+      <h1>Semáforo</h1>
+      <Semaforo />
+    </div>
+  );
+};
+
+export default App;

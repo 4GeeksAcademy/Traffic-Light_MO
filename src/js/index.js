@@ -3,25 +3,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // include your styles into the webpack bundle
-import "../styles/index.css";
+import "../styles/#index.css";
 
 //import your own components
-import Semaforo from "./component/home.jsx";
+import TrafficLight from "./TrafficLight.jsx";
 
 //render your react application
-ReactDOM.render(<Semaforo />, document.querySelector("#app"));
-// src/App.js
+ReactDOM.render(<TrafficLight />, document.querySelector("#app"));
 
 
-import Semaforo from './Semaforo';
 
-const App = () => {
-  return (
-    <div className="App">
-      <h1>Semáforo</h1>
-      <Semaforo />
-    </div>
-  );
-};
 
-export default App;
+export default TrafficLight;

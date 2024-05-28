@@ -1,35 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import '../styles/#index.css';
 
-const TrafficLight = () => {
-  const [state, setState] = useState('RED');
+import React, { useState } from "react";
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setState(prevState => {
-        switch (prevState) {
-          case 'RED':
-            return 'GREEN';
-          case 'GREEN':
-            return 'YELLOW';
-          case 'YELLOW':
-            return 'RED';
-          default:
-            return 'RED';
-        }
-      });
-    }, 1000); // Cambia el estado cada segundo
+export const TrafficLight = () => { 
 
-    return () => clearInterval(timer); // Limpia el intervalo al desmontar el componente
-  }, []);
+    const [activeLight, setActiveLight] = useState('');
 
-  return (
-    <div className="trafficlight">
-      <div className={`light ${state === 'RED' ? 'red' : ''}`}></div>
-      <div className={`light ${state === 'YELLOW' ? 'yellow' : ''}`}></div>
-      <div className={`light ${state === 'GREEN' ? 'green' : ''}`}></div>
+    const handleLightClick = (selected) => {
+        setActiveLight(selected);
+    };
+
+    return (
+    <div>
+        <div id="TrafficHandle"></div>
+            <div id="TrafficContainer">
+                <div className={`red light ${activeLight === 'red' ? 'selected' : ''}`} onClick={() => handleLightClick('red')}></div>
+                <div className={`yellow light ${activeLight === 'yellow' ? 'selected' : ''}`} onClick={() => handleLightClick('yellow')}></div>
+                <div className={`green light ${activeLight === 'green' ? 'selected' : ''}`} onClick={() => handleLightClick('green')}></div>
+             </div>
     </div>
-  );
-};
+    );
+}
 
 export default TrafficLight;
